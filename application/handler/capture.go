@@ -5,6 +5,7 @@ import (
 	domain "github.com/Tambarie/payment-gateway/domain/payment-gateway"
 	"github.com/Tambarie/payment-gateway/response"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"log"
 	"net/http"
 )
@@ -12,6 +13,7 @@ import (
 func (h *Handler) Capture() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		var captured = &domain.Capture{}
+		captured.TransactionID = uuid.New().String()
 
 		if err := helpers.Decode(context, &captured); err != nil {
 			log.Fatalf("Error %v", err)
@@ -66,6 +68,7 @@ func (h *Handler) Capture() gin.HandlerFunc {
 			response.JSON(context, 201, gin.H{
 				"Amount Debited":  captured.Amount,
 				"Account Balance": currentDB["amount"],
+				"TransactionID":   currentDB["transaction_id"],
 			}, nil, "successfully captured")
 		}
 	}
