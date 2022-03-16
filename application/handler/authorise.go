@@ -23,7 +23,6 @@ func (h *Handler) Authorize() gin.HandlerFunc {
 		checker := 119
 		log.Println(merchant.CardNumber)
 		res := helpers.AuthorisationFailure(merchant.CardNumber, checker)
-		log.Println(res)
 		if res == true {
 			response.JSON(context, http.StatusForbidden, nil, nil, "You can't use this card")
 			return
