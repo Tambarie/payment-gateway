@@ -36,6 +36,24 @@ func (paymentRepo *RepositoryDB) SaveCapturedTransaction(capture *domain.Capture
 	return capture, err
 }
 
+func (paymentRepo *RepositoryDB) GetCapturedTransaction(id string) (bson.M, error) {
+	collection := paymentRepo.db.Database("payment-gateway").Collection("captured-transaction")
+	var result bson.M
+	err := collection.FindOne(
+		context.TODO(),
+		bson.D{{"authorization_id", id}},
+	).Decode(&result)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return nil, err
+		}
+		log.Fatal(err)
+	}
+	fmt.Printf("found document in tammy %v", result)
+
+	return result, nil
+}
+
 func (paymentRepo *RepositoryDB) GetID(id string) (bson.M, error) {
 	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
 
