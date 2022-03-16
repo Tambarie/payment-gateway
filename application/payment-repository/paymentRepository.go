@@ -1,7 +1,10 @@
-package paymentGatewayRepository
+package payment_repository
 
 import (
+	"fmt"
+	domain "github.com/Tambarie/payment-gateway/domain/payment-gateway"
 	"go.mongodb.org/mongo-driver/mongo"
+	"golang.org/x/net/context"
 )
 
 // RepositoryDB struct
@@ -16,7 +19,12 @@ func NewPaymentGatewayRepositoryDB(client *mongo.Client) *RepositoryDB {
 	}
 }
 
-// GetUserByEmail Fetches user based on the email from the database
+func (paymentRepo *RepositoryDB) CreateMerchant(card *domain.Card) (*domain.Card, error) {
+	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
+	result, err := collection.InsertOne(context.TODO(), card)
+	fmt.Printf("Inserted document with _id: %v\n", result.InsertedID)
+	return card, err
+}
 
 // CreateWallet  Creates payment-gateway to the database
 

@@ -14,7 +14,7 @@ import (
 // Init setting up mongDB
 func Init() *mongo.Client {
 
-	mongoURL := fmt.Sprintf("%s://%s:%s", os.Getenv("db_type"), os.Getenv("mongo_db_host"), os.Getenv("mongo_db_port"))
+	mongoURL := fmt.Sprintf("%s://%s:%s", os.Getenv("DB_TYPE"), os.Getenv("MONGO_DB_HOST"), os.Getenv("MONGO_DB_PORT"))
 
 	mongoTimeout := time.Minute * 15
 

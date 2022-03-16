@@ -1,7 +1,7 @@
 package helpers
 
 import (
-	"github.com/Tambarie/wallet-engine/infrastructure/servererrors"
+	"github.com/Tambarie/payment-gateway/infrastructure/servererrors"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 )

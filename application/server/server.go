@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/Tambarie/payment-gateway/application/handler"
-	"github.com/Tambarie/payment-gateway/application/paymentGatewayRepository"
+	"github.com/Tambarie/payment-gateway/application/payment-repository"
 	"github.com/Tambarie/payment-gateway/domain/service"
 	"github.com/Tambarie/payment-gateway/infrastructure/repository/mongoDB"
 	"log"
@@ -19,7 +19,7 @@ func Start() {
 
 	db := mongoDB.Init()
 	h := handler.Handler{
-		PaymentGatewayService: service.NewPaymentGatewayService(paymentGatewayRepository.NewPaymentGatewayRepositoryDB(db)),
+		PaymentGatewayService: service.NewPaymentGatewayService(payment_repository.NewPaymentGatewayRepositoryDB(db)),
 	}
 	DefineRouter(router, &h)
 	PORT := fmt.Sprintf(":%s", os.Getenv("service_port"))

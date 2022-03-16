@@ -1,19 +1,26 @@
 package service
 
 import (
-	"github.com/Tambarie/payment-gateway/application/paymentGatewayRepository"
+	"github.com/Tambarie/payment-gateway/application/payment-repository"
+	domain "github.com/Tambarie/payment-gateway/domain/payment-gateway"
 )
 
-// WalletService interface
-type PaymentGatewayService interface{}
+// PaymentGatewayService interface
+type PaymentGatewayService interface {
+	CreateMerchant(card *domain.Card) (*domain.Card, error)
+}
 
 // DefaultWalletService struct
 type DefaultWalletService struct {
-	repo paymentGatewayRepository.Repository
+	repo payment_repository.Repository
 }
 
-func NewPaymentGatewayService(repo paymentGatewayRepository.Repository) *DefaultWalletService {
+func NewPaymentGatewayService(repo payment_repository.Repository) *DefaultWalletService {
 	return &DefaultWalletService{
 		repo: repo,
 	}
+}
+
+func (s *DefaultWalletService) CreateMerchant(card *domain.Card) (*domain.Card, error) {
+	return s.repo.CreateMerchant(card)
 }
