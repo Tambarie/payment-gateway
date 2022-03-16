@@ -21,11 +21,11 @@ func (h *Handler) Refund() gin.HandlerFunc {
 
 		capturedTransaction, err := h.PaymentGatewayService.GetCapturedTransaction(refund.AuthorizationID)
 		if err != nil {
-			log.Fatalf("Error %v", err)
+			response.JSON(context, http.StatusBadRequest, nil, nil, "authorisation ID is not valid")
+			return
 		}
 
 		merchantCard, err := h.PaymentGatewayService.GetID(refund.AuthorizationID)
-		log.Println(merchantCard["id"])
 		if err != nil {
 			log.Fatalf("Error %v", err)
 			return
@@ -36,10 +36,10 @@ func (h *Handler) Refund() gin.HandlerFunc {
 			return
 		}
 
-		//if merchantCard == nil {
-		//	response.JSON(context, http.StatusBadRequest, nil, nil, "refund ID not valid")
-		//	return
-		//}
+		if merchantCard == nil {
+			response.JSON(context, http.StatusBadRequest, nil, nil, "refund ID not valid")
+			return
+		}
 
 		checker := 3238
 		var cardNumber = merchantCard["card_number"].(int64)
@@ -53,7 +53,6 @@ func (h *Handler) Refund() gin.HandlerFunc {
 		if err != nil {
 			log.Fatalf("Error %v", err)
 		}
-		log.Println(capturedTransaction["amount"])
 
 		capturedAmount := capturedTransaction["amount"].(float64)
 		authorisedAmount := merchantCard["amount"].(float64)
