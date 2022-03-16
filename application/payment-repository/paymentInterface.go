@@ -12,4 +12,5 @@ type Repository interface {
 	GetID(id string) (bson.M, error)
 	UpdateAccount(amount float64, id string) (*mongo.UpdateResult, error)
 	SaveCapturedTransaction(capture *domain.Capture) (*domain.Capture, error)
+	GetCapturedTransaction(id string) (bson.M, error)
 }
