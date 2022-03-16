@@ -13,6 +13,7 @@ type PaymentGatewayService interface {
 	GetID(id string) (bson.M, error)
 	UpdateAccount(amount float64, id string) (*mongo.UpdateResult, error)
 	SaveCapturedTransaction(capture *domain.Capture) (*domain.Capture, error)
+	GetCapturedTransaction(id string) (bson.M, error)
 }
 
 // DefaultWalletService struct
@@ -40,4 +41,8 @@ func (s *DefaultWalletService) UpdateAccount(amount float64, id string) (*mongo.
 
 func (s *DefaultWalletService) SaveCapturedTransaction(capture *domain.Capture) (*domain.Capture, error) {
 	return s.repo.SaveCapturedTransaction(capture)
+}
+
+func (s *DefaultWalletService) GetCapturedTransaction(id string) (bson.M, error) {
+	return s.repo.GetCapturedTransaction(id)
 }
