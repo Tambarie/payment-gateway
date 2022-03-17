@@ -15,7 +15,7 @@ type RepositoryDB struct {
 	db *mongo.Client
 }
 
-// NewWalletRepositoryDB function to initialize RepositoryDB struct
+// NewPaymentGatewayRepositoryDB function to initialize RepositoryDB struct
 func NewPaymentGatewayRepositoryDB(client *mongo.Client) *RepositoryDB {
 	return &RepositoryDB{
 		db: client,
@@ -29,7 +29,7 @@ func (paymentRepo *RepositoryDB) CreateMerchant(card *domain.Card) (*domain.Card
 	return card, err
 }
 
-func (paymentRepo *RepositoryDB) GetID(id string) (bson.M, error) {
+func (paymentRepo *RepositoryDB) GetCardByID(id string) (bson.M, error) {
 	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
 
 	var result bson.M
@@ -70,16 +70,16 @@ func (paymentRepo *RepositoryDB) UpdateAccount(amount float64, id string) (inter
 	return result.UpsertedID, err
 }
 
-func (paymentRepo *RepositoryDB) SaveCapturedTransaction(capture *domain.Capture) (*mongo.InsertOneResult, error) {
+func (paymentRepo *RepositoryDB) SaveCapturedTransaction(capture *domain.Transaction) (*mongo.InsertOneResult, error) {
 	collection := paymentRepo.db.Database("payment-gateway").Collection("captured-transaction")
 	result, err := collection.InsertOne(context.TODO(), capture)
 	fmt.Printf("Inserted document with _id: %v\n", result.InsertedID)
 	return result, err
 }
 
-func (paymentRepo *RepositoryDB) GetCapturedTransactionByTransactionID(id string) (*domain.Capture, error) {
+func (paymentRepo *RepositoryDB) GetCapturedTransactionByTransactionID(id string) (*domain.Transaction, error) {
 	collection := paymentRepo.db.Database("payment-gateway").Collection("captured-transaction")
-	var result *domain.Capture
+	var result *domain.Transaction
 	err := collection.FindOne(
 		context.TODO(),
 		bson.D{{"transaction_id", id}},
@@ -156,6 +156,29 @@ func (paymentRepo *RepositoryDB) GetRefundTrackerByTransactionID(id string) (bso
 	}
 	fmt.Printf("found document in refund-tracker-collection %v", result)
 	return result, nil
+}
+
+func (paymentRepo *RepositoryDB) VoidCard(id string, void bool) (interface{}, error) {
+
+	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
+
+	filter := bson.D{{"id", id}}
+	opts := options.Update().SetUpsert(true)
+	update := bson.D{{"$set", bson.D{{"void", void}}}}
+
+	result, err := collection.UpdateOne(context.TODO(), filter, update, opts)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if result.MatchedCount != 0 {
+		fmt.Println("matched and replaced an existing document")
+
+	}
+	if result.UpsertedCount != 0 {
+		fmt.Printf("inserted a new document with ID %v\n", result.UpsertedID)
+	}
+	return result.UpsertedID, err
 }
 
 // CheckIfPasswordExists   Check if the user password exists in the database
