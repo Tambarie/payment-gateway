@@ -25,7 +25,7 @@ func (h *Handler) Refund() gin.HandlerFunc {
 			return
 		}
 
-		merchantCard, err := h.PaymentGatewayService.GetID(refund.AuthorizationID)
+		merchantCard, err := h.PaymentGatewayService.GetCardByID(refund.AuthorizationID)
 		if err != nil {
 			response.JSON(context, http.StatusBadRequest, nil, nil, "please enter a valid authorizationID")
 			return
@@ -84,7 +84,7 @@ func (h *Handler) Refund() gin.HandlerFunc {
 			log.Fatalf("Error %v", err)
 			return
 		}
-		final, err := h.PaymentGatewayService.GetID(refund.AuthorizationID)
+		final, err := h.PaymentGatewayService.GetCardByID(refund.AuthorizationID)
 		if err != nil {
 			log.Fatalf("Error %v", err)
 			return
