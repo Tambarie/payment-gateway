@@ -1,5 +1,5 @@
 package domain
 
 type Void struct {
-	ID string `json:"id" bson:"id"`
+	AuthorizationID string `json:"authorization_id" bson:"authorization_id"`
 }
