@@ -12,28 +12,28 @@ import (
 func (h *Handler) Void() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		card := &domain.Card{}
+		void := &domain.Void{}
 
-		if err := helpers.Decode(context, &card); err != nil {
+		if err := helpers.Decode(context, &void); err != nil {
 			log.Fatal(err)
 			return
 		}
 
-		cardDB, err := h.PaymentGatewayService.GetCardByID(card.ID)
+		_, err := h.PaymentGatewayService.GetCardByID(void.AuthorizationID)
 		if err != nil {
 			response.JSON(context, http.StatusNotFound, nil, nil, "No documents in results, please enter a valid authorisation token")
 			return
 		}
 
-		if card.ID != cardDB["id"] {
-			if err != nil {
-				response.JSON(context, http.StatusForbidden, nil, nil, "Please enter a valid unique ID")
-				return
-			}
+		card.VoidCard()
 
-			card.VoidCard()
-
-			_, err := h.PaymentGatewayService.UpdateAccount(card.ID)
-
+		_, err = h.PaymentGatewayService.VoidCard(void.AuthorizationID, card.Void)
+		if err != nil {
+			log.Fatal(err)
+			return
 		}
+		response.JSON(context, 201, gin.H{
+			"message": "card has been blocked",
+		}, nil, "")
 	}
 }
