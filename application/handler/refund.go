@@ -11,35 +11,34 @@ import (
 
 func (h *Handler) Refund() gin.HandlerFunc {
 	return func(context *gin.Context) {
-		refund := domain.Refund{}
-		merchant := domain.Card{}
+		refund := &domain.Refund{}
+		refundTracker := &domain.RefundTracker{}
 
 		if err := helpers.Decode(context, &refund); err != nil {
 			log.Fatalf("Error %v", err)
 			return
 		}
 
-		capturedTransaction, err := h.PaymentGatewayService.GetCapturedTransaction(refund.AuthorizationID)
+		capturedTransaction, err := h.PaymentGatewayService.GetCapturedTransactionByTransactionID(refund.TransactionID)
 		if err != nil {
-			log.Fatalf("Error %v", err)
-		}
-
-		merchantCard, err := h.PaymentGatewayService.GetID(refund.AuthorizationID)
-		log.Println(merchantCard["id"])
-		if err != nil {
-			log.Fatalf("Error %v", err)
+			response.JSON(context, http.StatusBadRequest, nil, nil, "transaction ID is not valid")
 			return
 		}
 
-		if capturedTransaction["transaction_id"] != refund.TransactionID {
+		merchantCard, err := h.PaymentGatewayService.GetCardByID(refund.AuthorizationID)
+		if err != nil {
+			response.JSON(context, http.StatusBadRequest, nil, nil, "please enter a valid authorizationID")
+			return
+		}
+
+		if capturedTransaction.TransactionID != refund.TransactionID {
 			response.JSON(context, http.StatusBadRequest, nil, nil, "refund ID not valid")
 			return
 		}
-
-		//if merchantCard == nil {
-		//	response.JSON(context, http.StatusBadRequest, nil, nil, "refund ID not valid")
-		//	return
-		//}
+		if refund.Amount > capturedTransaction.Amount {
+			response.JSON(context, http.StatusBadRequest, nil, nil, "sorry, you can't be refunded")
+			return
+		}
 
 		checker := 3238
 		var cardNumber = merchantCard["card_number"].(int64)
@@ -49,13 +48,7 @@ func (h *Handler) Refund() gin.HandlerFunc {
 			return
 		}
 
-		capturedTransaction, err = h.PaymentGatewayService.GetCapturedTransaction(refund.AuthorizationID)
-		if err != nil {
-			log.Fatalf("Error %v", err)
-		}
-		log.Println(capturedTransaction["amount"])
-
-		capturedAmount := capturedTransaction["amount"].(float64)
+		capturedAmount := capturedTransaction.Amount
 		authorisedAmount := merchantCard["amount"].(float64)
 
 		if capturedAmount < refund.Amount && authorisedAmount < refund.Amount {
@@ -63,13 +56,42 @@ func (h *Handler) Refund() gin.HandlerFunc {
 			return
 		}
 
-		merchant.RefundMerchant(refund.Amount)
+		var refundBalance float64
+		var balance = merchantCard["amount"].(float64)
+		//var count = merchantCard["count"].(int32)
 
-		_, err = h.PaymentGatewayService.UpdateAccount(merchant.Amount, refund.AuthorizationID)
+		refTracker, err := h.PaymentGatewayService.GetRefundTrackerByTransactionID(refund.TransactionID)
+		if err == nil {
+			var count = refTracker["count"].(int32)
+			log.Println("am here")
+			if count > 0 {
+				response.JSON(context, http.StatusBadRequest, nil, nil, "Sorry you have already been refunded your money")
+				return
+			}
+		}
+
+		refundBalance = refund.Amount + balance
+		_, err = h.PaymentGatewayService.RefundUpdateAccount(refundBalance, refund.AuthorizationID, 1)
 		if err != nil {
 			log.Fatalf("Error %v", err)
 			return
 		}
+		refundTracker.Count = 1
+		refundTracker.TransactionID = capturedTransaction.TransactionID
 
+		_, err = h.PaymentGatewayService.SaveRefundTracker(refundTracker)
+		if err != nil {
+			log.Fatalf("Error %v", err)
+			return
+		}
+		final, err := h.PaymentGatewayService.GetCardByID(refund.AuthorizationID)
+		if err != nil {
+			log.Fatalf("Error %v", err)
+			return
+		}
+		response.JSON(context, 201, gin.H{
+			"Amount Refunded": refund.Amount,
+			"Account Balance": final["amount"],
+		}, nil, "successfully refunded")
 	}
 }

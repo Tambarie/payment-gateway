@@ -10,10 +10,15 @@ import (
 // PaymentGatewayService interface
 type PaymentGatewayService interface {
 	CreateMerchant(card *domain.Card) (*domain.Card, error)
-	GetID(id string) (bson.M, error)
-	UpdateAccount(amount float64, id string) (*mongo.UpdateResult, error)
-	SaveCapturedTransaction(capture *domain.Capture) (*domain.Capture, error)
-	GetCapturedTransaction(id string) (bson.M, error)
+	GetCardByID(id string) (bson.M, error)
+	UpdateAccount(amount float64, id string) (interface{}, error)
+	SaveCapturedTransaction(capture *domain.Transaction) (*mongo.InsertOneResult, error)
+	GetCapturedTransactionByTransactionID(id string) (*domain.Transaction, error)
+	GetCapturedTransactionByAuthorizationID(id string) (bson.M, error)
+	RefundUpdateAccount(amount float64, id string, count int) (interface{}, error)
+	GetRefundTrackerByTransactionID(id string) (bson.M, error)
+	SaveRefundTracker(tracker *domain.RefundTracker) (*mongo.InsertOneResult, error)
+	VoidCard(id string, void bool) (interface{}, error)
 }
 
 // DefaultWalletService struct
@@ -31,18 +36,38 @@ func (s *DefaultWalletService) CreateMerchant(card *domain.Card) (*domain.Card, 
 	return s.repo.CreateMerchant(card)
 }
 
-func (s *DefaultWalletService) GetID(id string) (bson.M, error) {
-	return s.repo.GetID(id)
+func (s *DefaultWalletService) GetCardByID(id string) (bson.M, error) {
+	return s.repo.GetCardByID(id)
 }
 
-func (s *DefaultWalletService) UpdateAccount(amount float64, id string) (*mongo.UpdateResult, error) {
+func (s *DefaultWalletService) UpdateAccount(amount float64, id string) (interface{}, error) {
 	return s.repo.UpdateAccount(amount, id)
 }
 
-func (s *DefaultWalletService) SaveCapturedTransaction(capture *domain.Capture) (*domain.Capture, error) {
+func (s *DefaultWalletService) SaveCapturedTransaction(capture *domain.Transaction) (*mongo.InsertOneResult, error) {
 	return s.repo.SaveCapturedTransaction(capture)
 }
 
-func (s *DefaultWalletService) GetCapturedTransaction(id string) (bson.M, error) {
-	return s.repo.GetCapturedTransaction(id)
+func (s *DefaultWalletService) GetCapturedTransactionByTransactionID(id string) (*domain.Transaction, error) {
+	return s.repo.GetCapturedTransactionByTransactionID(id)
+}
+
+func (s *DefaultWalletService) GetCapturedTransactionByAuthorizationID(id string) (bson.M, error) {
+	return s.repo.GetCapturedTransactionByAuthorizationID(id)
+}
+
+func (s *DefaultWalletService) RefundUpdateAccount(amount float64, id string, count int) (interface{}, error) {
+	return s.repo.RefundUpdateAccount(amount, id, count)
+}
+
+func (s *DefaultWalletService) GetRefundTrackerByTransactionID(id string) (bson.M, error) {
+	return s.repo.GetRefundTrackerByTransactionID(id)
+}
+
+func (s *DefaultWalletService) SaveRefundTracker(tracker *domain.RefundTracker) (*mongo.InsertOneResult, error) {
+	return s.repo.SaveRefundTracker(tracker)
+}
+
+func (s *DefaultWalletService) VoidCard(id string, void bool) (interface{}, error) {
+	return s.repo.VoidCard(id, void)
 }
