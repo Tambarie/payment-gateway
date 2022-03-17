@@ -12,7 +12,7 @@ import (
 
 func (h *Handler) Capture() gin.HandlerFunc {
 	return func(context *gin.Context) {
-		var captured = &domain.Capture{}
+		var captured = &domain.Transaction{}
 		var refund = &domain.RefundTracker{}
 		captured.TransactionID = uuid.New().String()
 
@@ -20,9 +20,8 @@ func (h *Handler) Capture() gin.HandlerFunc {
 			log.Fatalf("Error %v", err)
 			return
 		}
-		log.Println(captured.AuthorizationID)
 
-		card, err := h.PaymentGatewayService.GetID(captured.AuthorizationID)
+		card, err := h.PaymentGatewayService.GetCardByID(captured.AuthorizationID)
 		if err != nil {
 			response.JSON(context, http.StatusForbidden, nil, nil, "No documents in results, please enter a valid authorisation token")
 			return
@@ -72,13 +71,11 @@ func (h *Handler) Capture() gin.HandlerFunc {
 				return
 			}
 
-			log.Println(captured.AuthorizationID)
-			currentDB, err := h.PaymentGatewayService.GetID(captured.AuthorizationID)
+			currentDB, err := h.PaymentGatewayService.GetCardByID(captured.AuthorizationID)
 			if err != nil {
 				log.Fatalf("Error %v", err)
 				return
 			}
-
 			response.JSON(context, 201, gin.H{
 				"Amount Debited":  captured.Amount,
 				"Account Balance": currentDB["amount"],
