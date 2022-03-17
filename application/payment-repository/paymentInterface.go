@@ -9,12 +9,13 @@ import (
 // Repository interface
 type Repository interface {
 	CreateMerchant(card *domain.Card) (*domain.Card, error)
-	GetID(id string) (bson.M, error)
+	GetCardByID(id string) (bson.M, error)
 	UpdateAccount(amount float64, id string) (interface{}, error)
-	SaveCapturedTransaction(capture *domain.Capture) (*mongo.InsertOneResult, error)
-	GetCapturedTransactionByTransactionID(id string) (*domain.Capture, error)
+	SaveCapturedTransaction(capture *domain.Transaction) (*mongo.InsertOneResult, error)
+	GetCapturedTransactionByTransactionID(id string) (*domain.Transaction, error)
 	GetCapturedTransactionByAuthorizationID(id string) (bson.M, error)
 	RefundUpdateAccount(amount float64, id string, count int) (interface{}, error)
 	SaveRefundTracker(tracker *domain.RefundTracker) (*mongo.InsertOneResult, error)
 	GetRefundTrackerByTransactionID(id string) (bson.M, error)
+	VoidCard(id string, void bool) (interface{}, error)
 }
