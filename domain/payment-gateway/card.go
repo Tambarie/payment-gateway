@@ -9,4 +9,9 @@ type Card struct {
 	Amount          float64 `json:"amount" bson:"amount"`
 	Currency        string  `json:"currency" bson:"currency"`
 	Count           int     `json:"count" bson:"count"`
+	Void            bool    `json:"-" bson:"void"`
+}
+
+func (c *Card) VoidCard() {
+	c.Void = true
 }
