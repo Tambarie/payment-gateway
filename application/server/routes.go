@@ -50,5 +50,6 @@ func DefineRouter(router *gin.Engine, handler *handler.Handler) {
 	apiRouter.POST("/authorize", handler.Authorize())
 	apiRouter.POST("/capture", handler.Capture())
 	apiRouter.PUT("/refund", handler.Refund())
+	apiRouter.DELETE("/void", handler.Void())
 
 }
