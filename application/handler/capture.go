@@ -13,16 +13,18 @@ import (
 func (h *Handler) Capture() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		var captured = &domain.Capture{}
+		var refund = &domain.RefundTracker{}
 		captured.TransactionID = uuid.New().String()
 
 		if err := helpers.Decode(context, &captured); err != nil {
 			log.Fatalf("Error %v", err)
 			return
 		}
+		log.Println(captured.AuthorizationID)
 
 		card, err := h.PaymentGatewayService.GetID(captured.AuthorizationID)
 		if err != nil {
-			log.Fatalf("Error %v", err)
+			response.JSON(context, http.StatusForbidden, nil, nil, "No documents in results, please enter a valid authorisation token")
 			return
 		}
 
@@ -37,6 +39,17 @@ func (h *Handler) Capture() gin.HandlerFunc {
 		if captured.AuthorizationID != card["id"] {
 			response.JSON(context, http.StatusBadRequest, nil, nil, "Please enter a valid Unique ID")
 			return
+		}
+
+		refund.TransactionID = captured.TransactionID
+		refTracker, err := h.PaymentGatewayService.GetRefundTrackerByTransactionID(refund.TransactionID)
+		if err == nil {
+			var count = refTracker["count"].(int32)
+			log.Println("am here")
+			if count > 0 {
+				response.JSON(context, http.StatusBadRequest, nil, nil, "Sorry you have already been refunded your money")
+				return
+			}
 		}
 
 		var balance = card["amount"].(float64)
@@ -59,6 +72,7 @@ func (h *Handler) Capture() gin.HandlerFunc {
 				return
 			}
 
+			log.Println(captured.AuthorizationID)
 			currentDB, err := h.PaymentGatewayService.GetID(captured.AuthorizationID)
 			if err != nil {
 				log.Fatalf("Error %v", err)
@@ -68,7 +82,7 @@ func (h *Handler) Capture() gin.HandlerFunc {
 			response.JSON(context, 201, gin.H{
 				"Amount Debited":  captured.Amount,
 				"Account Balance": currentDB["amount"],
-				"TransactionID":   currentDB["transaction_id"],
+				"TransactionID":   captured.TransactionID,
 			}, nil, "successfully captured")
 		}
 	}
