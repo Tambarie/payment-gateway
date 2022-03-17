@@ -8,9 +8,5 @@ type Card struct {
 	Cvv             int64   `json:"cvv" bson:"cvv"`
 	Amount          float64 `json:"amount" bson:"amount"`
 	Currency        string  `json:"currency" bson:"currency"`
-}
-
-func (c *Card) RefundMerchant(amount float64) *Card {
-	c.Amount += amount
-	return c
+	Count           int     `json:"count" bson:"count"`
 }
