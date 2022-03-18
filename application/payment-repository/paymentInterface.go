@@ -8,7 +8,10 @@ import (
 
 // Repository interface
 type Repository interface {
-	CreateMerchant(card *domain.Card) (*domain.Card, error)
+	CheckIfEmailExists(email string) (bson.M, error)
+	CheckIfUserExists(userReference string) (bson.M, error)
+	CreateUser(user *domain.User) (*domain.User, error)
+	Authorise(card *domain.Card) (*domain.Card, error)
 	GetCardByID(id string) (bson.M, error)
 	UpdateAccount(amount float64, id string) (interface{}, error)
 	SaveCapturedTransaction(capture *domain.Transaction) (*mongo.InsertOneResult, error)
