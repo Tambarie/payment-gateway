@@ -12,6 +12,7 @@ import (
 
 func (h *Handler) Capture() gin.HandlerFunc {
 	return func(context *gin.Context) {
+		helpers.LogRequest(context)
 		var captured = &domain.Transaction{}
 		var refund = &domain.RefundTracker{}
 		captured.TransactionID = uuid.New().String()

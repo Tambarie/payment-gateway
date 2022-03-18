@@ -2,3 +2,117 @@
 2022/03/18 03:59:39 server.go:35: Server Started at Port:8080
 2022/03/18 04:11:41 db.go:29: Database Connected Successfully...
 2022/03/18 04:11:41 server.go:35: Server Started at Port:8080
+2022/03/18 04:20:57 db.go:29: Database Connected Successfully...
+2022/03/18 04:20:57 server.go:35: Server Started at Port:8080
+2022/03/18 08:04:22 db.go:29: Database Connected Successfully...
+2022/03/18 08:04:22 server.go:35: Server Started at Port:8080
+2022/03/18 19:17:55 db.go:29: Database Connected Successfully...
+2022/03/18 19:17:55 server.go:35: Server Started at Port:8080
+2022/03/18 19:18:12 createAccount.go:31: Error [internal server error: EOF]
+2022/03/18 19:18:18 db.go:29: Database Connected Successfully...
+2022/03/18 19:18:18 server.go:35: Server Started at Port:8080
+2022/03/18 19:18:53 db.go:29: Database Connected Successfully...
+2022/03/18 19:18:53 server.go:35: Server Started at Port:8080
+2022/03/18 19:19:13 createAccount.go:31: Error [internal server error: EOF]
+2022/03/18 19:19:19 db.go:29: Database Connected Successfully...
+2022/03/18 19:19:19 server.go:35: Server Started at Port:8080
+2022/03/18 19:20:53 logs.go:93: {"time_stamp":"2022-03-18T19:20:53+01:00","level":"INFO","message":"Checking if email exists:  ..."}
+2022/03/18 19:25:58 db.go:29: Database Connected Successfully...
+2022/03/18 19:25:58 server.go:35: Server Started at Port:8080
+2022/03/18 19:25:58 logs.go:93: {"time_stamp":"2022-03-18T19:25:58+01:00","level":"INFO","message":"Checking if email exists:  ..."}
+2022/03/18 19:29:38 db.go:29: Database Connected Successfully...
+2022/03/18 19:29:38 server.go:35: Server Started at Port:8080
+2022/03/18 19:29:47 logs.go:93: {"time_stamp":"2022-03-18T19:29:47+01:00","level":"INFO","message":"Checking if email exists:  ..."}
+2022/03/18 19:29:49 logs.go:93: {"time_stamp":"2022-03-18T19:29:49+01:00","level":"INFO","message":"Checking if email exists:  ..."}
+2022/03/18 19:32:31 logs.go:93: {"time_stamp":"2022-03-18T19:32:31+01:00","level":"INFO","message":"Checking if email exists: gt.gbaragbo@gmail.com ..."}
+2022/03/18 19:32:58 db.go:29: Database Connected Successfully...
+2022/03/18 19:32:58 server.go:35: Server Started at Port:8080
+2022/03/18 19:32:59 logs.go:93: {"time_stamp":"2022-03-18T19:32:59+01:00","level":"INFO","message":"Checking if email exists: gt.gbaragbo@gmail.com ..."}
+2022/03/18 19:32:59 logs.go:93: {"time_stamp":"2022-03-18T19:32:59+01:00","level":"INFO","message":"Authorising Merchant with reference: \u0026{e881c897-340b-478e-943d-0752bd3e40e4 Emmanuel Gbaragbo gt.gbaragbo@gmail.com  $2a$10$G2v/MzcWe2z4IPnVg6n0Ru/R2./RV2bAg3Gt4hB3xjec1y5IPjtE. 2022-03-18 19:32:59.209672 +0100 WAT m=+0.545194894} ..."}
+2022/03/18 19:33:53 db.go:29: Database Connected Successfully...
+2022/03/18 19:33:53 server.go:35: Server Started at Port:8080
+2022/03/18 19:33:58 logs.go:93: {"time_stamp":"2022-03-18T19:33:58+01:00","level":"INFO","message":"Checking if email exists: gt.gbaragbo@gmail.com ..."}
+2022/03/18 19:34:05 logs.go:93: {"time_stamp":"2022-03-18T19:34:05+01:00","level":"INFO","message":"Checking if email exists: gt.gbaragbo@gmail.com ..."}
+2022/03/18 19:34:34 logs.go:93: {"time_stamp":"2022-03-18T19:34:34+01:00","level":"INFO","message":"Checking if email exists: gt.gbaragbo@gmail.com ..."}
+2022/03/18 19:34:34 logs.go:93: {"time_stamp":"2022-03-18T19:34:34+01:00","level":"INFO","message":"Authorising Merchant with reference: \u0026{e39356ff-ff29-4a5e-90d2-296b670e853f Emmanuel Gbaragbo gt.gbaragbo@gmail.com  $2a$10$3fpmDYOG2hYJNXj62Jh..O0oYy8OTXnxTHt3y8R1xnSBDhCelDTBW 2022-03-18 19:34:34.018036 +0100 WAT m=+40.980087765} ..."}
+2022/03/18 19:37:32 db.go:29: Database Connected Successfully...
+2022/03/18 19:37:32 server.go:35: Server Started at Port:8080
+2022/03/18 19:37:44 logs.go:74: {"time_stamp":"2022-03-18T19:37:44+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/e39356ff-ff29-4a5e-90d2-296b670e853f","method":"POST","x-correlation-id":"85b1ec45-fd22-46e1-9ee0-fc4608cb84f1","user-agent":"PostmanRuntime/7.29.0","x-response-time":"349ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:37:44 logs.go:93: {"time_stamp":"2022-03-18T19:37:44+01:00","level":"INFO","message":"Checking if user exists : e39356ff-ff29-4a5e-90d2-296b670e853f ..."}
+2022/03/18 19:39:52 db.go:29: Database Connected Successfully...
+2022/03/18 19:39:52 server.go:35: Server Started at Port:8080
+2022/03/18 19:39:59 logs.go:74: {"time_stamp":"2022-03-18T19:39:59+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/e39356ff-ff29-4a5e-90d2-296b670e853f","method":"POST","x-correlation-id":"777a6851-ec4f-423a-a843-e53180bb7da4","user-agent":"PostmanRuntime/7.29.0","x-response-time":"237ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:39:59 logs.go:93: {"time_stamp":"2022-03-18T19:39:59+01:00","level":"INFO","message":"Checking if user exists : e39356ff-ff29-4a5e-90d2-296b670e853f ..."}
+2022/03/18 19:39:59 authorise.go:28: map[]
+2022/03/18 19:40:54 db.go:29: Database Connected Successfully...
+2022/03/18 19:40:54 server.go:35: Server Started at Port:8080
+2022/03/18 19:41:02 logs.go:74: {"time_stamp":"2022-03-18T19:41:02+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/e39356ff-ff29-4a5e-90d2-296b670e853f","method":"POST","x-correlation-id":"f20ff848-f605-4c37-9675-c03c5b0f6549","user-agent":"PostmanRuntime/7.29.0","x-response-time":"278ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:41:02 authorise.go:18: e39356ff-ff29-4a5e-90d2-296b670e853f
+2022/03/18 19:41:02 logs.go:93: {"time_stamp":"2022-03-18T19:41:02+01:00","level":"INFO","message":"Checking if user exists : e39356ff-ff29-4a5e-90d2-296b670e853f ..."}
+2022/03/18 19:41:02 authorise.go:30: map[]
+2022/03/18 19:41:44 db.go:29: Database Connected Successfully...
+2022/03/18 19:41:44 server.go:35: Server Started at Port:8080
+2022/03/18 19:41:51 logs.go:74: {"time_stamp":"2022-03-18T19:41:51+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/e39356ff-ff29-4a5e-90d2-296b670e853f","method":"POST","x-correlation-id":"13070d65-a76b-4968-8952-475ec025a89e","user-agent":"PostmanRuntime/7.29.0","x-response-time":"273ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:41:51 authorise.go:18: e39356ff-ff29-4a5e-90d2-296b670e853f
+2022/03/18 19:41:51 logs.go:93: {"time_stamp":"2022-03-18T19:41:51+01:00","level":"INFO","message":"Checking if user exists : e39356ff-ff29-4a5e-90d2-296b670e853f ..."}
+2022/03/18 19:41:51 authorise.go:30: map[]
+2022/03/18 19:43:56 db.go:29: Database Connected Successfully...
+2022/03/18 19:43:56 server.go:35: Server Started at Port:8080
+2022/03/18 19:44:06 logs.go:74: {"time_stamp":"2022-03-18T19:44:06+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/e39356ff-ff29-4a5e-90d2-296b670e853f","method":"POST","x-correlation-id":"b5c91b17-08e1-4482-a34a-80061722baa5","user-agent":"PostmanRuntime/7.29.0","x-response-time":"208ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:44:06 authorise.go:18: e39356ff-ff29-4a5e-90d2-296b670e853f
+2022/03/18 19:44:06 logs.go:93: {"time_stamp":"2022-03-18T19:44:06+01:00","level":"INFO","message":"Checking if user exists : e39356ff-ff29-4a5e-90d2-296b670e853f ..."}
+2022/03/18 19:44:07 authorise.go:30: map[_id:ObjectID("6234d0ba107514c29287f808") email:gt.gbaragbo@gmail.com first_name:Emmanuel hash_password:{0 [36 50 97 36 49 48 36 51 102 112 109 68 89 79 71 50 104 89 74 78 88 106 54 50 74 104 46 46 79 48 111 89 121 56 79 84 88 110 120 84 72 116 51 121 56 82 49 120 110 83 66 68 104 67 101 108 68 84 66 87]} last_name:Gbaragbo password: reference:e39356ff-ff29-4a5e-90d2-296b670e853f time_created:2022-03-18 19:34:34.018036 +0100 WAT m=+40.980087765]
+2022/03/18 19:44:07 logs.go:93: {"time_stamp":"2022-03-18T19:44:07+01:00","level":"INFO","message":"Authorising Merchant with reference: \u0026{e39356ff-ff29-4a5e-90d2-296b670e853f 1aa557e6-709b-4c5f-8910-9619c27c8adb %!s(int64=374245455400126) %!s(int64=2023) Dec %!s(int64=456) %!s(float64=10) NGN %!s(int=0) %!s(bool=false)} ..."}
+2022/03/18 19:45:57 logs.go:74: {"time_stamp":"2022-03-18T19:45:57+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/capture","method":"POST","x-correlation-id":"ca143039-7a0b-4b4a-80b5-252d084baa4b","user-agent":"PostmanRuntime/7.29.0","x-response-time":"210ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:45:57 logs.go:93: {"time_stamp":"2022-03-18T19:45:57+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:45:57 logs.go:93: {"time_stamp":"2022-03-18T19:45:57+01:00","level":"INFO","message":"Getting Refund tracker by transaction ID :f7037a4f-55a8-4491-92df-21aff0d2270d"}
+2022/03/18 19:45:57 logs.go:93: {"time_stamp":"2022-03-18T19:45:57+01:00","level":"INFO","message":"Updating account with amount: 4 and id :1aa557e6-709b-4c5f-8910-9619c27c8adb"}
+2022/03/18 19:45:57 logs.go:93: {"time_stamp":"2022-03-18T19:45:57+01:00","level":"INFO","message":"Saving Captured transaction with reference: \u0026{f7037a4f-55a8-4491-92df-21aff0d2270d 1aa557e6-709b-4c5f-8910-9619c27c8adb %!s(float64=6)} ..."}
+2022/03/18 19:45:57 logs.go:93: {"time_stamp":"2022-03-18T19:45:57+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:46:04 logs.go:74: {"time_stamp":"2022-03-18T19:46:04+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/capture","method":"POST","x-correlation-id":"c58eab5f-bac6-40a9-a68e-79a582f7b918","user-agent":"PostmanRuntime/7.29.0","x-response-time":"311ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:46:04 logs.go:93: {"time_stamp":"2022-03-18T19:46:04+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:46:04 logs.go:93: {"time_stamp":"2022-03-18T19:46:04+01:00","level":"INFO","message":"Getting Refund tracker by transaction ID :d976cc41-d480-42ea-acde-3cb1e9cb5de8"}
+2022/03/18 19:46:17 logs.go:74: {"time_stamp":"2022-03-18T19:46:17+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/capture","method":"POST","x-correlation-id":"3de8506a-7403-4e40-9607-c03e8455c14b","user-agent":"PostmanRuntime/7.29.0","x-response-time":"269ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:46:17 logs.go:93: {"time_stamp":"2022-03-18T19:46:17+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:46:17 logs.go:93: {"time_stamp":"2022-03-18T19:46:17+01:00","level":"INFO","message":"Getting Refund tracker by transaction ID :f19dd16f-f8ad-4e79-af1d-362e17153dc7"}
+2022/03/18 19:46:17 logs.go:93: {"time_stamp":"2022-03-18T19:46:17+01:00","level":"INFO","message":"Updating account with amount: 0 and id :1aa557e6-709b-4c5f-8910-9619c27c8adb"}
+2022/03/18 19:46:17 logs.go:93: {"time_stamp":"2022-03-18T19:46:17+01:00","level":"INFO","message":"Saving Captured transaction with reference: \u0026{f19dd16f-f8ad-4e79-af1d-362e17153dc7 1aa557e6-709b-4c5f-8910-9619c27c8adb %!s(float64=4)} ..."}
+2022/03/18 19:46:17 logs.go:93: {"time_stamp":"2022-03-18T19:46:17+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:46:44 logs.go:74: {"time_stamp":"2022-03-18T19:46:44+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/refund","method":"PUT","x-correlation-id":"97edfdba-7cce-446f-a476-986241a134c7","user-agent":"PostmanRuntime/7.29.0","x-response-time":"238ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:46:44 logs.go:93: {"time_stamp":"2022-03-18T19:46:44+01:00","level":"INFO","message":"Getting Captured transaction by transaction ID :f19dd16f-f8ad-4e79-af1d-362e17153dc7"}
+2022/03/18 19:46:44 logs.go:93: {"time_stamp":"2022-03-18T19:46:44+01:00","level":"INFO","message":"Getting card by ID  with id: dc71af26-8e10-4645-85eb-5a0aed282616 ..."}
+2022/03/18 19:46:53 logs.go:74: {"time_stamp":"2022-03-18T19:46:53+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/refund","method":"PUT","x-correlation-id":"bda1ba41-fe2b-43f4-bcb4-977b57235c56","user-agent":"PostmanRuntime/7.29.0","x-response-time":"249ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:46:53 logs.go:93: {"time_stamp":"2022-03-18T19:46:53+01:00","level":"INFO","message":"Getting Captured transaction by transaction ID :f19dd16f-f8ad-4e79-af1d-362e17153dc7"}
+2022/03/18 19:46:53 logs.go:93: {"time_stamp":"2022-03-18T19:46:53+01:00","level":"INFO","message":"Getting card by ID  with id: f19dd16f-f8ad-4e79-af1d-362e17153dc7 ..."}
+2022/03/18 19:47:37 logs.go:74: {"time_stamp":"2022-03-18T19:47:37+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/refund","method":"PUT","x-correlation-id":"5eb06f26-40c3-4bea-9f9a-faa7ec159a80","user-agent":"PostmanRuntime/7.29.0","x-response-time":"237ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:47:37 logs.go:93: {"time_stamp":"2022-03-18T19:47:37+01:00","level":"INFO","message":"Getting Captured transaction by transaction ID :f19dd16f-f8ad-4e79-af1d-362e17153dc7"}
+2022/03/18 19:47:37 logs.go:93: {"time_stamp":"2022-03-18T19:47:37+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:47:45 logs.go:74: {"time_stamp":"2022-03-18T19:47:45+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/refund","method":"PUT","x-correlation-id":"fbe993de-3cd6-4e4f-bac3-89590f4e66ee","user-agent":"PostmanRuntime/7.29.0","x-response-time":"325ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:47:45 logs.go:93: {"time_stamp":"2022-03-18T19:47:45+01:00","level":"INFO","message":"Getting Captured transaction by transaction ID :f19dd16f-f8ad-4e79-af1d-362e17153dc7"}
+2022/03/18 19:47:45 logs.go:93: {"time_stamp":"2022-03-18T19:47:45+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:47:45 logs.go:93: {"time_stamp":"2022-03-18T19:47:45+01:00","level":"INFO","message":"Getting Refund tracker by transaction ID :f19dd16f-f8ad-4e79-af1d-362e17153dc7"}
+2022/03/18 19:47:45 logs.go:93: {"time_stamp":"2022-03-18T19:47:45+01:00","level":"INFO","message":"Updating account with :4 and id :1aa557e6-709b-4c5f-8910-9619c27c8adb "}
+2022/03/18 19:47:45 logs.go:93: {"time_stamp":"2022-03-18T19:47:45+01:00","level":"INFO","message":"Saving refund tracker with  :\u0026{f19dd16f-f8ad-4e79-af1d-362e17153dc7 1}"}
+2022/03/18 19:47:45 logs.go:93: {"time_stamp":"2022-03-18T19:47:45+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:47:55 logs.go:74: {"time_stamp":"2022-03-18T19:47:55+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/void","method":"PUT","x-correlation-id":"295e5b6e-4095-471b-aa69-08718ab4900a","user-agent":"PostmanRuntime/7.29.0","x-response-time":"290ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:47:55 logs.go:93: {"time_stamp":"2022-03-18T19:47:55+01:00","level":"INFO","message":"Getting card by ID  with id: dc71af26-8e10-4645-85eb-5a0aed282616 ..."}
+2022/03/18 19:48:09 logs.go:74: {"time_stamp":"2022-03-18T19:48:09+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/void","method":"PUT","x-correlation-id":"4511ce06-b019-4ed9-a443-aa5d611eb7da","user-agent":"PostmanRuntime/7.29.0","x-response-time":"298ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:48:09 logs.go:93: {"time_stamp":"2022-03-18T19:48:09+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:48:09 logs.go:93: {"time_stamp":"2022-03-18T19:48:09+01:00","level":"INFO","message":"Void card with id of  :1aa557e6-709b-4c5f-8910-9619c27c8adb"}
+2022/03/18 19:48:13 logs.go:74: {"time_stamp":"2022-03-18T19:48:13+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/refund","method":"PUT","x-correlation-id":"4eb79c33-b1c3-4576-b2d1-c652f9db04e7","user-agent":"PostmanRuntime/7.29.0","x-response-time":"162ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:48:13 logs.go:93: {"time_stamp":"2022-03-18T19:48:13+01:00","level":"INFO","message":"Getting Captured transaction by transaction ID :f19dd16f-f8ad-4e79-af1d-362e17153dc7"}
+2022/03/18 19:48:13 logs.go:93: {"time_stamp":"2022-03-18T19:48:13+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:48:17 logs.go:74: {"time_stamp":"2022-03-18T19:48:17+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/capture","method":"POST","x-correlation-id":"b09867f1-fbb0-406b-8fc5-af49b262df77","user-agent":"PostmanRuntime/7.29.0","x-response-time":"294ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:48:17 logs.go:93: {"time_stamp":"2022-03-18T19:48:17+01:00","level":"INFO","message":"Getting card by ID  with id: 1aa557e6-709b-4c5f-8910-9619c27c8adb ..."}
+2022/03/18 19:48:21 logs.go:74: {"time_stamp":"2022-03-18T19:48:21+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/e39356ff-ff29-4a5e-90d2-296b670e853f","method":"POST","x-correlation-id":"24cebcd7-b840-4f0d-aded-3299ad744463","user-agent":"PostmanRuntime/7.29.0","x-response-time":"275ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:48:21 authorise.go:18: e39356ff-ff29-4a5e-90d2-296b670e853f
+2022/03/18 19:48:21 logs.go:93: {"time_stamp":"2022-03-18T19:48:21+01:00","level":"INFO","message":"Checking if user exists : e39356ff-ff29-4a5e-90d2-296b670e853f ..."}
+2022/03/18 19:48:21 authorise.go:30: map[_id:ObjectID("6234d0ba107514c29287f808") email:gt.gbaragbo@gmail.com first_name:Emmanuel hash_password:{0 [36 50 97 36 49 48 36 51 102 112 109 68 89 79 71 50 104 89 74 78 88 106 54 50 74 104 46 46 79 48 111 89 121 56 79 84 88 110 120 84 72 116 51 121 56 82 49 120 110 83 66 68 104 67 101 108 68 84 66 87]} last_name:Gbaragbo password: reference:e39356ff-ff29-4a5e-90d2-296b670e853f time_created:2022-03-18 19:34:34.018036 +0100 WAT m=+40.980087765]
+2022/03/18 19:48:21 logs.go:93: {"time_stamp":"2022-03-18T19:48:21+01:00","level":"INFO","message":"Authorising Merchant with reference: \u0026{e39356ff-ff29-4a5e-90d2-296b670e853f 4083efec-0de4-4a70-95e1-f6acaae0d0b1 %!s(int64=374245455400126) %!s(int64=2023) Dec %!s(int64=456) %!s(float64=10) NGN %!s(int=0) %!s(bool=false)} ..."}
+2022/03/18 19:48:39 logs.go:74: {"time_stamp":"2022-03-18T19:48:39+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/e39356ff-ff29-4a5e-90d2-296b670e853f","method":"POST","x-correlation-id":"a7e2c062-3dfd-455e-842a-88047fcd0357","user-agent":"PostmanRuntime/7.29.0","x-response-time":"251ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/18 19:48:39 authorise.go:18: e39356ff-ff29-4a5e-90d2-296b670e853f
+2022/03/18 19:48:39 logs.go:93: {"time_stamp":"2022-03-18T19:48:39+01:00","level":"INFO","message":"Checking if user exists : e39356ff-ff29-4a5e-90d2-296b670e853f ..."}
+2022/03/18 19:48:39 authorise.go:30: map[_id:ObjectID("6234d0ba107514c29287f808") email:gt.gbaragbo@gmail.com first_name:Emmanuel hash_password:{0 [36 50 97 36 49 48 36 51 102 112 109 68 89 79 71 50 104 89 74 78 88 106 54 50 74 104 46 46 79 48 111 89 121 56 79 84 88 110 120 84 72 116 51 121 56 82 49 120 110 83 66 68 104 67 101 108 68 84 66 87]} last_name:Gbaragbo password: reference:e39356ff-ff29-4a5e-90d2-296b670e853f time_created:2022-03-18 19:34:34.018036 +0100 WAT m=+40.980087765]
+2022/03/18 19:48:39 logs.go:93: {"time_stamp":"2022-03-18T19:48:39+01:00","level":"INFO","message":"Authorising Merchant with reference: \u0026{e39356ff-ff29-4a5e-90d2-296b670e853f 83348e6a-28c4-4cb4-a70d-4c4549cc278c %!s(int64=374245455400126) %!s(int64=2023) Dec %!s(int64=456) %!s(float64=10) NGN %!s(int=0) %!s(bool=false)} ..."}
+2022/03/18 19:55:17 db.go:29: Database Connected Successfully...
+2022/03/18 19:55:17 server.go:35: Server Started at Port:8080

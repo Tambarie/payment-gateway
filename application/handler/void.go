@@ -11,6 +11,8 @@ import (
 
 func (h *Handler) Void() gin.HandlerFunc {
 	return func(context *gin.Context) {
+		helpers.LogRequest(context)
+
 		card := &domain.Card{}
 		void := &domain.Void{}
 

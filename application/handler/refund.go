@@ -11,6 +11,7 @@ import (
 
 func (h *Handler) Refund() gin.HandlerFunc {
 	return func(context *gin.Context) {
+		helpers.LogRequest(context)
 		refund := &domain.Refund{}
 		refundTracker := &domain.RefundTracker{}
 

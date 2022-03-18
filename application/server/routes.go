@@ -47,7 +47,8 @@ func initializeRouter() *gin.Engine {
 
 func DefineRouter(router *gin.Engine, handler *handler.Handler) {
 	apiRouter := router.Group("/api/v1")
-	apiRouter.POST("/authorize", handler.Authorize())
+	apiRouter.POST("/create-account", handler.CreateAccount())
+	apiRouter.POST("/authorize/:user-reference", handler.Authorize())
 	apiRouter.POST("/capture", handler.Capture())
 	apiRouter.PUT("/refund", handler.Refund())
 	apiRouter.PUT("/void", handler.Void())
