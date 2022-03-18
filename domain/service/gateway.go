@@ -9,7 +9,10 @@ import (
 
 // PaymentGatewayService interface
 type PaymentGatewayService interface {
-	CreateMerchant(card *domain.Card) (*domain.Card, error)
+	CheckIfEmailExists(email string) (bson.M, error)
+	CheckIfUserExists(userReference string) (bson.M, error)
+	CreateUser(user *domain.User) (*domain.User, error)
+	Authorise(card *domain.Card) (*domain.Card, error)
 	GetCardByID(id string) (bson.M, error)
 	UpdateAccount(amount float64, id string) (interface{}, error)
 	SaveCapturedTransaction(capture *domain.Transaction) (*mongo.InsertOneResult, error)
@@ -32,8 +35,20 @@ func NewPaymentGatewayService(repo payment_repository.Repository) *DefaultWallet
 	}
 }
 
-func (s *DefaultWalletService) CreateMerchant(card *domain.Card) (*domain.Card, error) {
-	return s.repo.CreateMerchant(card)
+func (s *DefaultWalletService) CheckIfEmailExists(email string) (bson.M, error) {
+	return s.repo.CheckIfEmailExists(email)
+}
+
+func (s *DefaultWalletService) CheckIfUserExists(userReference string) (bson.M, error) {
+	return s.repo.CheckIfUserExists(userReference)
+}
+
+func (s *DefaultWalletService) CreateUser(user *domain.User) (*domain.User, error) {
+	return s.repo.CreateUser(user)
+}
+
+func (s *DefaultWalletService) Authorise(card *domain.Card) (*domain.Card, error) {
+	return s.repo.Authorise(card)
 }
 
 func (s *DefaultWalletService) GetCardByID(id string) (bson.M, error) {
