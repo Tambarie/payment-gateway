@@ -22,7 +22,7 @@ func Start() {
 		PaymentGatewayService: service.NewPaymentGatewayService(payment_repository.NewPaymentGatewayRepositoryDB(db)),
 	}
 	DefineRouter(router, &h)
-	PORT := fmt.Sprintf(":%s", os.Getenv("service_port"))
+	PORT := fmt.Sprintf(":%s", os.Getenv("SERVICE_PORT"))
 	if PORT == ":" {
 		PORT += "8080"
 	}
