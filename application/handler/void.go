@@ -19,7 +19,7 @@ func (h *Handler) Void() gin.HandlerFunc {
 			return
 		}
 
-		_, err := h.PaymentGatewayService.GetCardByID(void.AuthorizationID)
+		cardDB, err := h.PaymentGatewayService.GetCardByID(void.AuthorizationID)
 		if err != nil {
 			response.JSON(context, http.StatusNotFound, nil, nil, "No documents in results, please enter a valid authorisation token")
 			return
@@ -33,7 +33,8 @@ func (h *Handler) Void() gin.HandlerFunc {
 			return
 		}
 		response.JSON(context, 201, gin.H{
-			"message": "card has been blocked",
+			"message":         "your card has been blocked",
+			"account balance": cardDB["amount"],
 		}, nil, "")
 	}
 }
