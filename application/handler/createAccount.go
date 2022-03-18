@@ -35,20 +35,13 @@ func (h *Handler) CreateAccount() gin.HandlerFunc {
 		// check if email exists in the database
 		_, err = h.PaymentGatewayService.CheckIfEmailExists(user.Email)
 		if err != nil {
-			response.JSON(context, http.StatusBadRequest, nil, nil, "your email does not exists")
+			userD, err := h.PaymentGatewayService.CreateUser(user)
+			if err != nil {
+				log.Fatalf("Error, %v", err)
+			}
+			response.JSON(context, http.StatusCreated, userD, nil, "account created successfully")
 			return
-
 		}
-
-		//if user.Email != userDB["email"]{
-		//	log.Fatalf("Error %v",err)
-		//	return
-		//}
-
-		userD, err := h.PaymentGatewayService.CreateUser(user)
-		if err != nil {
-			log.Fatalf("Error, %v", err)
-		}
-		response.JSON(context, http.StatusCreated, userD, nil, "")
+		response.JSON(context, http.StatusCreated, "", nil, "user already exists")
 	}
 }
