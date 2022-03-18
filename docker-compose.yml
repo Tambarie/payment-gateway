@@ -1,0 +1,31 @@
+version: "3.9"  # optional since v1.27.0
+
+services:
+  payment-gateway:
+    build: .
+    ports:
+      - "8090:8080"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+  db:
+    image: mongo # use latest official postgres version
+    restart: always
+    environment:
+       - SERVICE_PORT=8080
+       - SERVICE_MODE=dev
+       - DB_TYPE =mongodb
+       - MONGO_DB_HOST=localhost
+       - MONGO_DB_NAME=payment-gateway
+       - MONGO_DB_PORT=27017
+       - APP_DIR=log
+       - MONGO_DB_AUTH_DB=admin
+
+    ports:
+       - 27017:27017
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+
+volumes:
+  database-data:
