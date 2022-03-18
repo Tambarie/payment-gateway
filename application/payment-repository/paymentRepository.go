@@ -23,20 +23,66 @@ func NewPaymentGatewayRepositoryDB(client *mongo.Client) *RepositoryDB {
 	}
 }
 
-func (paymentRepo *RepositoryDB) CreateMerchant(card *domain.Card) (*domain.Card, error) {
+func (paymentRepo *RepositoryDB) CheckIfEmailExists(email string) (bson.M, error) {
+	helpers.LogEvent("INFO", fmt.Sprintf("Checking if email exists: %s ...", email))
+	collection := paymentRepo.db.Database("payment-gateway").Collection("user")
 
-	helpers.LogEvent("INFO", fmt.Sprintf("Creating Merchant with reference: %s ...", card))
+	var result bson.M
+	err := collection.FindOne(
+		context.TODO(),
+		bson.D{{"email", email}},
+	).Decode(&result)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return nil, err
+		}
+		log.Fatal(err)
+	}
+	fmt.Printf("found document %v", result)
+	return result, nil
+}
 
+func (paymentRepo *RepositoryDB) CheckIfUserExists(userReference string) (bson.M, error) {
+	helpers.LogEvent("INFO", fmt.Sprintf("Checking if user exists : %s ...", userReference))
+	collection := paymentRepo.db.Database("payment-gateway").Collection("user")
+
+	var result bson.M
+	err := collection.FindOne(
+		context.TODO(),
+		bson.D{{"email", userReference}},
+	).Decode(&result)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return nil, err
+		}
+		log.Fatal(err)
+	}
+	fmt.Printf("found document %v", result)
+	return result, nil
+}
+
+func (paymentRepo *RepositoryDB) Authorise(card *domain.Card) (*domain.Card, error) {
+
+	helpers.LogEvent("INFO", fmt.Sprintf("Authorising Merchant with reference: %s ...", card))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
 	result, err := collection.InsertOne(context.TODO(), card)
 	fmt.Printf("Inserted document with _id: %v\n", result.InsertedID)
 	return card, err
 }
 
+func (paymentRepo *RepositoryDB) CreateUser(user *domain.User) (*domain.User, error) {
+	helpers.LogEvent("INFO", fmt.Sprintf("Authorising Merchant with reference: %s ...", user))
+
+	collection := paymentRepo.db.Database("payment-gateway").Collection("user")
+	result, err := collection.InsertOne(context.TODO(), user)
+	fmt.Printf("Inserted document with _id: %v\n", result.InsertedID)
+	return user, err
+}
+
 func (paymentRepo *RepositoryDB) GetCardByID(id string) (bson.M, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Getting card by ID  with id: %s ...", id))
-	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
 
+	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
 	var result bson.M
 	err := collection.FindOne(
 		context.TODO(),
