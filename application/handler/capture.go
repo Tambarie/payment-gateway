@@ -27,11 +27,16 @@ func (h *Handler) Capture() gin.HandlerFunc {
 			return
 		}
 
+		if card["void"] == true {
+			response.JSON(context, http.StatusBadRequest, nil, nil, "Sorry, your card is not valid")
+			return
+		}
+
 		checker := 259
 		var cardNumber = card["card_number"].(int64)
 		res := helpers.AuthorisationFailure(cardNumber, checker)
 		if res == true {
-			response.JSON(context, http.StatusForbidden, nil, nil, "You can't use this card")
+			response.JSON(context, http.StatusBadRequest, nil, nil, "Capture failure")
 			return
 		}
 

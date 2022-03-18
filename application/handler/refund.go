@@ -31,6 +31,11 @@ func (h *Handler) Refund() gin.HandlerFunc {
 			return
 		}
 
+		if merchantCard["void"] == true {
+			response.JSON(context, http.StatusBadRequest, nil, nil, "Sorry, your card is not valid")
+			return
+		}
+
 		if capturedTransaction.TransactionID != refund.TransactionID {
 			response.JSON(context, http.StatusBadRequest, nil, nil, "refund ID not valid")
 			return
@@ -44,7 +49,7 @@ func (h *Handler) Refund() gin.HandlerFunc {
 		var cardNumber = merchantCard["card_number"].(int64)
 		res := helpers.AuthorisationFailure(cardNumber, checker)
 		if res == true {
-			response.JSON(context, http.StatusForbidden, nil, nil, "You can't use this card")
+			response.JSON(context, http.StatusBadRequest, nil, nil, "Refund failure")
 			return
 		}
 
