@@ -13,7 +13,6 @@ import (
 )
 
 func InitializeLogDir() {
-
 	logFile := "/payment-gateway.log"
 	logDir := "logs"
 
