@@ -49,7 +49,7 @@ func (paymentRepo *RepositoryDB) CheckIfUserExists(userReference string) (bson.M
 	var result bson.M
 	err := collection.FindOne(
 		context.TODO(),
-		bson.D{{"email", userReference}},
+		bson.D{{"reference", userReference}},
 	).Decode(&result)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
