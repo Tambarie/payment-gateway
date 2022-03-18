@@ -20,8 +20,13 @@ func (h *Handler) Authorize() gin.HandlerFunc {
 			return
 		}
 
+		// check if credit card is valid
+		if false == helpers.Valid(merchant.CardNumber) {
+			response.JSON(context, http.StatusBadRequest, nil, nil, "your credit card is not valid")
+			return
+		}
+
 		checker := 119
-		log.Println(merchant.CardNumber)
 		res := helpers.AuthorisationFailure(merchant.CardNumber, checker)
 		if res == true {
 			response.JSON(context, http.StatusBadRequest, nil, nil, "Authorisation failure")
