@@ -29,7 +29,6 @@ func TestVoid(t *testing.T) {
 	void := &domain.Void{
 		AuthorizationID: "1aa557e6-709b-4c5f-8910-9619c27c8adb",
 	}
-	//card:= &domain.Card{}
 
 	marshalledVoid, err := json.Marshal(void)
 	if err != nil {
