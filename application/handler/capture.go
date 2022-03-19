@@ -49,7 +49,7 @@ func (h *Handler) Capture() gin.HandlerFunc {
 		refund.TransactionID = captured.TransactionID
 		refTracker, err := h.PaymentGatewayService.GetRefundTrackerByTransactionID(refund.TransactionID)
 		if err == nil {
-			var count = refTracker["count"].(int32)
+			var count = refTracker["count"].(int)
 			log.Println("am here")
 			if count > 0 {
 				response.JSON(context, http.StatusBadRequest, nil, nil, "Sorry you have already been refunded your money")
