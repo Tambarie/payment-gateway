@@ -57,7 +57,6 @@ func TestAuthorise(t *testing.T) {
 		response := httptest.NewRecorder()
 		router.ServeHTTP(response, request)
 
-		log.Println(response.Body)
 		if response.Code != http.StatusCreated {
 			t.Errorf("expected %v but got %v", http.StatusCreated, response.Code)
 		}
