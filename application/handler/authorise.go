@@ -15,7 +15,6 @@ func (h *Handler) Authorize() gin.HandlerFunc {
 		helpers.LogRequest(context)
 		userReference := context.Param("user-reference")
 
-		log.Println(userReference)
 		var merchant = &domain.Card{}
 		merchant.ID = uuid.New().String()
 		merchant.UserReference = userReference

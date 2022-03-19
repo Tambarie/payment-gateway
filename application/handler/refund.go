@@ -64,7 +64,6 @@ func (h *Handler) Refund() gin.HandlerFunc {
 
 		var refundBalance float64
 		var balance = merchantCard["amount"].(float64)
-		//var count = merchantCard["count"].(int32)
 
 		refTracker, err := h.PaymentGatewayService.GetRefundTrackerByTransactionID(refund.TransactionID)
 		if err == nil {
