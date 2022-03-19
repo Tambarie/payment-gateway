@@ -29,7 +29,7 @@ func TestAuthorise(t *testing.T) {
 		UserReference:   "user",
 		ID:              "1",
 		CardNumber:      374245455400126,
-		ExpirationYear:  0,
+		ExpirationYear:  "2023",
 		ExpirationMonth: "2023",
 		Cvv:             456,
 		Amount:          10,
