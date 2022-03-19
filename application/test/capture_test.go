@@ -38,7 +38,7 @@ func TestCapture(t *testing.T) {
 		Amount:          5,
 	}
 
-	marhalledCapture, err := json.Marshal(captured)
+	marshalledCapture, err := json.Marshal(captured)
 	if err != nil {
 		log.Fatalf("Error %v", err)
 	}
@@ -61,7 +61,7 @@ func TestCapture(t *testing.T) {
 	mockPaymentService.EXPECT().SaveCapturedTransaction(captured).Return(nil, nil)
 
 	t.Run("testing for capture", func(t *testing.T) {
-		request, err := http.NewRequest(http.MethodPost, "/api/v1/capture", bytes.NewBuffer(marhalledCapture))
+		request, err := http.NewRequest(http.MethodPost, "/api/v1/capture", bytes.NewBuffer(marshalledCapture))
 		if err != nil {
 			log.Fatalf("an error occured :%v", err)
 		}
