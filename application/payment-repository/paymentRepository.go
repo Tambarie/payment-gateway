@@ -23,6 +23,7 @@ func NewPaymentGatewayRepositoryDB(client *mongo.Client) *RepositoryDB {
 	}
 }
 
+// CheckIfEmailExists checks if merchant's email exists in the database
 func (paymentRepo *RepositoryDB) CheckIfEmailExists(email string) (bson.M, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Checking if email exists: %s ...", email))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("user")
@@ -42,6 +43,7 @@ func (paymentRepo *RepositoryDB) CheckIfEmailExists(email string) (bson.M, error
 	return result, nil
 }
 
+// CheckIfUserExists  checks if merchant exists in the database
 func (paymentRepo *RepositoryDB) CheckIfUserExists(userReference string) (bson.M, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Checking if user exists : %s ...", userReference))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("user")
@@ -61,15 +63,17 @@ func (paymentRepo *RepositoryDB) CheckIfUserExists(userReference string) (bson.M
 	return result, nil
 }
 
+// Authorise authorising the merchant
 func (paymentRepo *RepositoryDB) Authorise(card *domain.Card) (*domain.Card, error) {
 
-	helpers.LogEvent("INFO", fmt.Sprintf("Authorising Merchant with reference: %s ...", card))
+	helpers.LogEvent("INFO", fmt.Sprintf("Authorising Merchant with reference: %v ...", card))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
 	result, err := collection.InsertOne(context.TODO(), card)
 	fmt.Printf("Inserted document with _id: %v\n", result.InsertedID)
 	return card, err
 }
 
+// CreateUser Creates user in the DB
 func (paymentRepo *RepositoryDB) CreateUser(user *domain.User) (*domain.User, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Authorising Merchant with reference: %s ...", user))
 
@@ -79,6 +83,7 @@ func (paymentRepo *RepositoryDB) CreateUser(user *domain.User) (*domain.User, er
 	return user, err
 }
 
+// GetCardByID Gets card of the merchant bu ID
 func (paymentRepo *RepositoryDB) GetCardByID(id string) (bson.M, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Getting card by ID  with id: %s ...", id))
 
@@ -98,6 +103,7 @@ func (paymentRepo *RepositoryDB) GetCardByID(id string) (bson.M, error) {
 	return result, nil
 }
 
+// UpdateAccount Updates the merchant's account
 func (paymentRepo *RepositoryDB) UpdateAccount(amount float64, id string) (interface{}, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Updating account with amount: %v and id :%s", amount, id))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
@@ -121,14 +127,16 @@ func (paymentRepo *RepositoryDB) UpdateAccount(amount float64, id string) (inter
 	return result.UpsertedID, err
 }
 
+// SaveCapturedTransaction Saves the captured transaction
 func (paymentRepo *RepositoryDB) SaveCapturedTransaction(capture *domain.Transaction) (*mongo.InsertOneResult, error) {
-	helpers.LogEvent("INFO", fmt.Sprintf("Saving Captured transaction with reference: %s ...", capture))
+	helpers.LogEvent("INFO", fmt.Sprintf("Saving Captured transaction with reference: %v ...", capture))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("captured-transaction")
 	result, err := collection.InsertOne(context.TODO(), capture)
 	fmt.Printf("Inserted document with _id: %v\n", result.InsertedID)
 	return result, err
 }
 
+// GetCapturedTransactionByTransactionID Gets the captured transaction by transactionID
 func (paymentRepo *RepositoryDB) GetCapturedTransactionByTransactionID(id string) (*domain.Transaction, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Getting Captured transaction by transaction ID :%s", id))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("captured-transaction")
@@ -147,6 +155,7 @@ func (paymentRepo *RepositoryDB) GetCapturedTransactionByTransactionID(id string
 	return result, nil
 }
 
+// GetCapturedTransactionByAuthorizationID  Gets the captured transaction by authorisationID
 func (paymentRepo *RepositoryDB) GetCapturedTransactionByAuthorizationID(id string) (bson.M, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Getting Captured transaction by authorization ID :%s", id))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("captured-transaction")
@@ -165,6 +174,7 @@ func (paymentRepo *RepositoryDB) GetCapturedTransactionByAuthorizationID(id stri
 	return result, nil
 }
 
+// RefundUpdateAccount refunds and updates the merchant's account
 func (paymentRepo *RepositoryDB) RefundUpdateAccount(amount float64, id string, count int) (interface{}, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Updating account with :%v and id :%s ", amount, id))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
@@ -188,6 +198,7 @@ func (paymentRepo *RepositoryDB) RefundUpdateAccount(amount float64, id string, 
 	return result.UpsertedID, err
 }
 
+// SaveRefundTracker Saves the refund's tracker
 func (paymentRepo *RepositoryDB) SaveRefundTracker(tracker *domain.RefundTracker) (*mongo.InsertOneResult, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Saving refund tracker with  :%v", tracker))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("refund-tracker-collection")
@@ -196,6 +207,7 @@ func (paymentRepo *RepositoryDB) SaveRefundTracker(tracker *domain.RefundTracker
 	return result, err
 }
 
+// GetRefundTrackerByTransactionID Get's the refund tracker by the transaction ID
 func (paymentRepo *RepositoryDB) GetRefundTrackerByTransactionID(id string) (bson.M, error) {
 	helpers.LogEvent("INFO", fmt.Sprintf("Getting Refund tracker by transaction ID :%s", id))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("refund-tracker-collection")
@@ -214,6 +226,7 @@ func (paymentRepo *RepositoryDB) GetRefundTrackerByTransactionID(id string) (bso
 	return result, nil
 }
 
+// VoidCard Voids the merchant's card'
 func (paymentRepo *RepositoryDB) VoidCard(id string, void bool) (interface{}, error) {
 
 	helpers.LogEvent("INFO", fmt.Sprintf("Void card with id of  :%s", id))
