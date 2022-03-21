@@ -17,6 +17,7 @@ import (
 	"testing"
 )
 
+// tests to authorise handler
 func TestAuthorise(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	controller := gomock.NewController(t)
