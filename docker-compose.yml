@@ -13,7 +13,7 @@ services:
     image: mongo # use latest official postgres version
     restart: always
     environment:
-      MONGODB_URI: mongodb+srv://tambarie:GpY1vj3OlvLXeeGX@cluster0.ry5ub.mongodb.net/payment-gateway?retryWrites=true&w=majority
+      - .env
     volumes:
       - database-data:/data/db -d mongo # persist data even if container shuts down
 
