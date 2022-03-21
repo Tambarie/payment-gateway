@@ -66,7 +66,7 @@ func (paymentRepo *RepositoryDB) CheckIfUserExists(userReference string) (bson.M
 // Authorise authorising the merchant
 func (paymentRepo *RepositoryDB) Authorise(card *domain.Card) (*domain.Card, error) {
 
-	helpers.LogEvent("INFO", fmt.Sprintf("Authorising Merchant with reference: %s ...", card))
+	helpers.LogEvent("INFO", fmt.Sprintf("Authorising Merchant with reference: %v ...", card))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("gateway")
 	result, err := collection.InsertOne(context.TODO(), card)
 	fmt.Printf("Inserted document with _id: %v\n", result.InsertedID)
@@ -129,7 +129,7 @@ func (paymentRepo *RepositoryDB) UpdateAccount(amount float64, id string) (inter
 
 // SaveCapturedTransaction Saves the captured transaction
 func (paymentRepo *RepositoryDB) SaveCapturedTransaction(capture *domain.Transaction) (*mongo.InsertOneResult, error) {
-	helpers.LogEvent("INFO", fmt.Sprintf("Saving Captured transaction with reference: %s ...", capture))
+	helpers.LogEvent("INFO", fmt.Sprintf("Saving Captured transaction with reference: %v ...", capture))
 	collection := paymentRepo.db.Database("payment-gateway").Collection("captured-transaction")
 	result, err := collection.InsertOne(context.TODO(), capture)
 	fmt.Printf("Inserted document with _id: %v\n", result.InsertedID)
