@@ -70,7 +70,7 @@ The command above helps to generate mock interfaces from a source file.
 
 To run tests, run:
 ```
-make test
+go test
 ```
 
 ## Author
