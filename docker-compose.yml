@@ -9,15 +9,14 @@ services:
       - source: database-data
         target: /app/src
         type: volume
-    depends_on:
-      - db
-  db:
-    image: mongo # use latest official postgres version
-    restart: always
     environment:
       - .env
-    volumes:
-      - database-data:/data/db -d mongo # persist data even if container shuts down
-
+#  db:
+#    image: mongo # use latest official postgres version
+#    restart: always
+#    environment:
+#      - .env
+#    volumes:
+#      - database-data:/data/db -d mongo # persist data even if container shuts down
 volumes:
   database-data:
