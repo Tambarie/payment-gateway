@@ -6,7 +6,9 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - .:/app/src
+      - source: database-data
+        target: /app/src
+        type: volume
     depends_on:
       - db
   db:
