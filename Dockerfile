@@ -1,10 +1,10 @@
 FROM golang:1.17.0-stretch
 
-RUN mkdir -p  "app/src"
-
 WORKDIR /app/src
 
-COPY ./ /app/src
+COPY . /app/src
+
+RUN ls
 
 RUN go mod tidy
 
