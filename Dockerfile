@@ -1,11 +1,9 @@
 FROM golang:1.17.0-stretch
 
-WORKDIR /app/src
+WORKDIR /app
 
-COPY . /app/src
-
-RUN ls
+COPY . /app
 
 RUN go mod tidy
 
-ENTRYPOINT [ "go", "run", "main.go" ]
+CMD [ "go", "run", "main.go" ]
