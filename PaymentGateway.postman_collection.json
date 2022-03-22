@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "5b4a06f5-c1b7-4765-aae1-8631b2256c8f",
+		"name": "PaymentGateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authorize",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"card_number\": 4000000000000319,\n\"expiration_year\": 2023,\n\"expiration_month\": \"Dec\",\n\"cvv\": 456,\n\"amount\": 400,\n\"currency\": \"NGN\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/authorize",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"authorize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "capture",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"authorization_id\": \"f07df6de-9bba-4a72-ab89-c4b134525da9\",\n\"amount\":5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/capture",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"capture"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refund",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"transaction_id\": \"7d2219f7-32c2-496d-b307-e7037a8ec837\",\n\"authorization_id\": \"f07df6de-9bba-4a72-ab89-c4b134525da9\",\n\"amount\":7\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/refund",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"refund"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "void",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"authorization_id\": \"dc71af26-8e10-4645-85eb-5a0aed282616\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/void",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"void"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/create-account",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"create-account"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
