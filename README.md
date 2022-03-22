@@ -52,6 +52,14 @@ SERVICE_PORT=8080
 DB_PASS=<your db password>
 ```
 
+
+
+### Postman Collection
+
+1. [Get the postman collection link here ](https://www.getpostman.com/collections/db0e41771a301a73740e)
+
+
+
 ## Tests
 Testing is done using the GoMock framework. The ``gomock`` package and the ``mockgen``code generation tool are used for this purpose.
 If you installed the dependencies using the command given above, then the packages would have been installed. Otherwise, installation can be done using the following commands:
