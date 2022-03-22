@@ -357,3 +357,27 @@ Server Started at Port:8080
 2022/03/22 11:48:31 logs.go:74: {"time_stamp":"2022-03-22T11:48:31+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/refund","method":"PUT","x-correlation-id":"97f8b813-9cea-493b-bf9e-e6bb6c02d503","user-agent":"PostmanRuntime/7.29.0","x-response-time":"315ns","x-application-host":"localhost:8080","remote_ip":"::1"}
 2022/03/22 11:48:31 logs.go:93: {"time_stamp":"2022-03-22T11:48:31+01:00","level":"INFO","message":"Getting Captured transaction by transaction ID :bf391713-0577-4b14-a915-d7f64ff1a119"}
 2022/03/22 11:48:31 logs.go:93: {"time_stamp":"2022-03-22T11:48:31+01:00","level":"INFO","message":"Getting card by ID  with id: 7fd8bcbb-f5d4-48a1-8929-26766cff2a57 ..."}
+2022/03/22 15:08:55 db.go:39: Database Connected Successfully...
+2022/03/22 15:08:55 server.go:35: Server Started at Port:8080
+2022/03/22 15:09:04 logs.go:74: {"time_stamp":"2022-03-22T15:09:04+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/capture","method":"POST","x-correlation-id":"326d384c-9094-4a2a-a4ac-e2f88f3c145c","user-agent":"PostmanRuntime/7.29.0","x-response-time":"312ns","x-application-host":"127.0.0.1:8080","remote_ip":"127.0.0.1"}
+2022/03/22 15:09:04 logs.go:93: {"time_stamp":"2022-03-22T15:09:04+01:00","level":"INFO","message":"Getting card by ID  with id: 7fd8bcbb-f5d4-48a1-8929-26766cff2a57 ..."}
+2022/03/22 15:09:13 logs.go:74: {"time_stamp":"2022-03-22T15:09:13+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/68fcdce3-4dd3-4e5d-b8d1-7a0fa5578d14","method":"POST","x-correlation-id":"0e190998-a4ca-4b0c-afd2-402873365458","user-agent":"PostmanRuntime/7.29.0","x-response-time":"306ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/22 15:09:13 logs.go:93: {"time_stamp":"2022-03-22T15:09:13+01:00","level":"INFO","message":"Checking if user exists : 68fcdce3-4dd3-4e5d-b8d1-7a0fa5578d14 ..."}
+2022/03/22 15:09:16 logs.go:93: {"time_stamp":"2022-03-22T15:09:16+01:00","level":"INFO","message":"Authorising Merchant with reference: \u0026{68fcdce3-4dd3-4e5d-b8d1-7a0fa5578d14 30e6265a-2143-4cc5-8cfb-8d34adbe73af 374245455400126 2023 Dec 456 10 NGN 0 false} ..."}
+2022/03/22 15:14:20 db.go:39: Database Connected Successfully...
+2022/03/22 15:14:20 server.go:35: Server Started at Port:8080
+2022/03/22 15:14:20 server.go:39: An error occurred with the server: listen tcp :8080: bind: address already in use
+2022/03/22 15:16:41 db.go:39: Database Connected Successfully...
+2022/03/22 15:16:41 server.go:35: Server Started at Port:8080
+2022/03/22 15:16:44 logs.go:74: {"time_stamp":"2022-03-22T15:16:44+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/68fcdce3-4dd3-4e5d-b8d1-7a0fa5578d14","method":"POST","x-correlation-id":"0056c052-cfcd-4fb9-a630-5148f8751065","user-agent":"PostmanRuntime/7.29.0","x-response-time":"344ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/22 15:16:44 logs.go:93: {"time_stamp":"2022-03-22T15:16:44+01:00","level":"INFO","message":"Checking if user exists : 68fcdce3-4dd3-4e5d-b8d1-7a0fa5578d14 ..."}
+2022/03/22 15:16:46 logs.go:93: {"time_stamp":"2022-03-22T15:16:46+01:00","level":"INFO","message":"Authorising Merchant with reference: \u0026{68fcdce3-4dd3-4e5d-b8d1-7a0fa5578d14 fa404359-1b59-452d-b4d1-533ae27cc458 374245455400126 2023 Dec 456 10 NGN 0 false} ..."}
+2022/03/22 15:17:24 logs.go:74: {"time_stamp":"2022-03-22T15:17:24+01:00","version":"1","level":"INFO","level_value":0,"statuscode":"200","message":"OK:No errors found","logger_name":"","app_name":"Payment-Gateway","path":"/api/v1/authorize/68fcdce3-4dd3-4e5d-b8d1-7a0fa5578d14","method":"POST","x-correlation-id":"568e5459-a2a7-46f2-9f9c-15cf7c937fc9","user-agent":"PostmanRuntime/7.29.0","x-response-time":"285ns","x-application-host":"localhost:8080","remote_ip":"::1"}
+2022/03/22 15:17:24 logs.go:93: {"time_stamp":"2022-03-22T15:17:24+01:00","level":"INFO","message":"Checking if user exists : 68fcdce3-4dd3-4e5d-b8d1-7a0fa5578d14 ..."}
+2022/03/22 15:17:24 logs.go:93: {"time_stamp":"2022-03-22T15:17:24+01:00","level":"INFO","message":"Authorising Merchant with reference: \u0026{68fcdce3-4dd3-4e5d-b8d1-7a0fa5578d14 0817a565-94d0-4938-8a70-1c76db1e2a6c 374245455400126 2023 Dec 456 10 NGN 0 false} ..."}
+2022/03/22 15:39:58 db.go:39: Database Connected Successfully...
+2022/03/22 15:39:58 server.go:35: Server Started at Port:8080
+2022/03/22 15:40:09 server.go:47: Shutting down the server...
+2022/03/22 15:40:11 server.go:58: Server exits successfully
+2022/03/22 15:40:29 db.go:39: Database Connected Successfully...
+2022/03/22 15:40:29 server.go:35: Server Started at Port:8080
