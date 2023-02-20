@@ -1,6 +1,6 @@
 # Payment-gateway-API
 
-Rentals-API is a `RESTful-API` will allow a
+Payment-API is a `RESTful-API` will allow a
 merchant to offer a way for their `shoppers` to pay for their `product`.
 
 
